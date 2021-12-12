@@ -287,13 +287,15 @@
             "type": "String"
         }
     },
-    "variables": {},
+    "variables": {
+        "location": "ukwest"
+    },
     "resources": [
         {
             "type": "Microsoft.Compute/disks",
             "apiVersion": "2021-04-01",
             "name": "[parameters('disks_aikido_1_disk1_9d6cfcc789df49ffbe694531e73c2189_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "StandardSSD_LRS",
                 "tier": "Standard"
@@ -320,7 +322,7 @@
             "type": "Microsoft.Compute/images",
             "apiVersion": "2021-07-01",
             "name": "[parameters('images_aikido_1_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "properties": {
                 "sourceVirtualMachine": {
                     "id": "[parameters('virtualMachines_aikido_externalid')]"
@@ -346,7 +348,7 @@
             "type": "Microsoft.ContainerInstance/containerGroups",
             "apiVersion": "2021-09-01",
             "name": "[parameters('containerGroups_mysql_on_azure_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "properties": {
                 "sku": "Standard",
                 "containers": [
@@ -410,7 +412,7 @@
             "type": "Microsoft.DBforMySQL/servers",
             "apiVersion": "2017-12-01",
             "name": "[parameters('servers_aikdo_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "GP_Gen5_4",
                 "tier": "GeneralPurpose",
@@ -435,7 +437,7 @@
             "type": "Microsoft.DBforMySQL/servers",
             "apiVersion": "2017-12-01",
             "name": "[parameters('servers_repl_dest_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "B_Gen5_2",
                 "tier": "Basic",
@@ -460,7 +462,7 @@
             "type": "Microsoft.DBforMySQL/servers",
             "apiVersion": "2017-12-01",
             "name": "[parameters('servers_test_replication_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "B_Gen5_2",
                 "tier": "Basic",
@@ -485,7 +487,7 @@
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "apiVersion": "2021-10-15",
             "name": "[parameters('databaseAccounts_aikidocosmoslab_name')]",
-            "location": "West US",
+            "location": "[variables('location')]",
             "tags": {
                 "defaultExperience": "Core (SQL)",
                 "hidden-cosmos-mmspecial": ""
@@ -517,7 +519,7 @@
                 },
                 "locations": [
                     {
-                        "locationName": "West US",
+                        "locationName": "[variables('location')]",
                         "provisioningState": "Succeeded",
                         "failoverPriority": 0,
                         "isZoneRedundant": false
@@ -545,7 +547,7 @@
             "type": "Microsoft.EventHub/namespaces",
             "apiVersion": "2021-11-01",
             "name": "[parameters('namespaces_replication_test_name')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "tags": {
                 "env": "poc"
             },
@@ -566,7 +568,7 @@
             "type": "microsoft.insights/components",
             "apiVersion": "2020-02-02",
             "name": "[parameters('components_eventhubrepfunction_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "kind": "web",
             "properties": {
                 "Application_Type": "web",
@@ -580,7 +582,7 @@
             "type": "microsoft.insights/components",
             "apiVersion": "2020-02-02",
             "name": "[parameters('components_EventHubToCosmosDB_name')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "tags": {
                 "hidden-link:/subscriptions/3387f4fe-efd5-44e2-a4a2-4581ab04bf99/resourceGroups/Azure_GCP_Migration/providers/Microsoft.Web/sites/EventHubToCosmosDB": "Resource"
             },
@@ -599,7 +601,7 @@
             "type": "Microsoft.Network/localNetworkGateways",
             "apiVersion": "2020-11-01",
             "name": "[parameters('localNetworkGateways_forddemo_localnetwork_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "properties": {
                 "localNetworkAddressSpace": {
                     "addressPrefixes": [
@@ -613,7 +615,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_aikido_1_nsg_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -674,7 +676,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_Aikido_2_nsg_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -735,7 +737,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_Aikido_ford_nsg_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -762,7 +764,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_db2vm_nsg_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -857,7 +859,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_db2_win_azure_nsg_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -935,7 +937,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_db2winazurensg855_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -1048,7 +1050,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_ford_demo_nsg_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "tags": {
                 "Name": "ford-demo-server"
             },
@@ -1078,7 +1080,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkSecurityGroups_kafka_azure_nsg_name')]",
-            "location": "westus2",
+            "location": "[variables('location')]",
             "properties": {
                 "securityRules": [
                     {
@@ -1190,7 +1192,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_aikido_1_ip_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -1223,7 +1225,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_Aikido_ford_ip_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -1240,7 +1242,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_aikido_ip_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -1257,7 +1259,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_db2_azure_ip_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -1274,7 +1276,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_db2vm_ip_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -1290,7 +1292,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_ford_demo_ip_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "tags": {
                 "Name": "ford-demo-server"
             },
@@ -1310,7 +1312,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_ford_demo_vnetgateway_publicIP_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -1327,7 +1329,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-11-01",
             "name": "[parameters('publicIPAddresses_kafka_azure_ip_name')]",
-            "location": "westus2",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -1344,7 +1346,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-11-01",
             "name": "[parameters('virtualNetworks_Azure_GCP_Migration_vnet_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -1370,7 +1372,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-11-01",
             "name": "[parameters('virtualNetworks_Azure_GCP_Migrationvnet144_name')]",
-            "location": "westus2",
+            "location": "[variables('location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -1396,7 +1398,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-11-01",
             "name": "[parameters('virtualNetworks_Azure_GCP_Migrationvnet955_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -1422,7 +1424,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-11-01",
             "name": "[parameters('virtualNetworks_eventhubrep_vNet2888792_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -1457,7 +1459,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-11-01",
             "name": "[parameters('virtualNetworks_evthub2_vNet5886669_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -1492,7 +1494,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-11-01",
             "name": "[parameters('virtualNetworks_ford_demo_vnet_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
@@ -1528,7 +1530,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-06-01",
             "name": "[parameters('storageAccounts_eventhubrepfunction_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Standard_LRS",
                 "tier": "Standard"
@@ -1563,7 +1565,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-06-01",
             "name": "[parameters('storageAccounts_evthub_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Standard_RAGRS",
                 "tier": "Standard"
@@ -1603,7 +1605,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-06-01",
             "name": "[parameters('storageAccounts_evthubnodejs_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Standard_RAGRS",
                 "tier": "Standard"
@@ -1642,7 +1644,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-06-01",
             "name": "[parameters('storageAccounts_sqlvamqrcrrkf6bowu_name')]",
-            "location": "centralindia",
+            "location": "[variables('location')]",
             "tags": {
                 "ms-resource-usage": "azure-cloud-shell"
             },
@@ -1681,7 +1683,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-06-01",
             "name": "[parameters('storageAccounts_teltonikafmc003_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Standard_RAGRS",
                 "tier": "Standard"
@@ -1718,7 +1720,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_AzureGCPMigration_817c_name')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1744,7 +1746,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_AzureGCPMigration_86c4_name')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1770,7 +1772,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_AzureGCPMigration_9242_name')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1796,7 +1798,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_AzureGCPMigration_a09a_name')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1822,7 +1824,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_AzureGCPMigration_a1f7_name')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1848,7 +1850,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_AzureGCPMigration_a636_name')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1874,7 +1876,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_AzureGCPMigration_bfb5_name')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1900,7 +1902,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2021-02-01",
             "name": "[parameters('serverfarms_ASP_EventHubRepFunction_0373_name')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -1978,7 +1980,7 @@
             "type": "Microsoft.Compute/snapshots",
             "apiVersion": "2021-04-01",
             "name": "[parameters('snapshots_aikido1_fullimage_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/disks', parameters('disks_aikido_1_disk1_9d6cfcc789df49ffbe694531e73c2189_name'))]"
             ],
@@ -2007,7 +2009,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2021-07-01",
             "name": "[parameters('virtualMachines_db2_win_azure_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_db2_win_azure41_name'))]"
             ],
@@ -2069,7 +2071,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2021-07-01",
             "name": "[parameters('virtualMachines_ford_demo_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_ford_demo438_name'))]"
             ],
@@ -2128,7 +2130,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2021-07-01",
             "name": "[parameters('virtualMachines_kafka_azure_name')]",
-            "location": "westus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_kafka_azure772_name'))]"
             ],
@@ -2189,7 +2191,7 @@
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "apiVersion": "2021-07-01",
             "name": "[concat(parameters('virtualMachines_Aikido_2_name'), '/enablevmaccess')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_Aikido_2_name'))]"
             ],
@@ -2208,7 +2210,7 @@
             "type": "Microsoft.DataMigration/services/projects",
             "apiVersion": "2021-06-30",
             "name": "[concat(parameters('services_Ford_Data_Migration_name'), '/datatransfer')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.DataMigration/services', parameters('services_Ford_Data_Migration_name'))]"
             ],
@@ -8454,7 +8456,7 @@
             "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/listenaccess')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8468,7 +8470,7 @@
             "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/RootManageSharedAccessKey')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8484,7 +8486,7 @@
             "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/sendaccess')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8498,7 +8500,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8512,7 +8514,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8526,7 +8528,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8540,7 +8542,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8554,7 +8556,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/teltonika')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8568,7 +8570,7 @@
             "type": "Microsoft.EventHub/namespaces/networkRuleSets",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/default')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
             ],
@@ -8583,7 +8585,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/degradationindependencyduration')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8607,7 +8609,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/degradationindependencyduration')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8631,7 +8633,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/degradationinserverresponsetime')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8655,7 +8657,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/degradationinserverresponsetime')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8679,7 +8681,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/digestMailConfiguration')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8703,7 +8705,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/digestMailConfiguration')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8727,7 +8729,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_billingdatavolumedailyspikeextension')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8751,7 +8753,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_billingdatavolumedailyspikeextension')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8775,7 +8777,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_canaryextension')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8799,7 +8801,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_canaryextension')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8823,7 +8825,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_exceptionchangeextension')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8847,7 +8849,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_exceptionchangeextension')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8871,7 +8873,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_memoryleakextension')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8895,7 +8897,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_memoryleakextension')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8919,7 +8921,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_securityextensionspackage')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8943,7 +8945,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_securityextensionspackage')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -8967,7 +8969,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_traceseveritydetector')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -8991,7 +8993,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_traceseveritydetector')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -9015,7 +9017,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/longdependencyduration')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -9039,7 +9041,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/longdependencyduration')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -9063,7 +9065,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/migrationToAlertRulesCompleted')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -9087,7 +9089,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/migrationToAlertRulesCompleted')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -9111,7 +9113,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/slowpageloadtime')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -9135,7 +9137,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/slowpageloadtime')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -9159,7 +9161,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_eventhubrepfunction_name'), '/slowserverresponsetime')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
             ],
@@ -9183,7 +9185,7 @@
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
             "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/slowserverresponsetime')]",
-            "location": "eastus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
             ],
@@ -9207,7 +9209,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkInterfaces_NIC_hpdrk254599xz78qa6gchuvc_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
             ],
@@ -9930,7 +9932,7 @@
                     {
                         "service": "Microsoft.Storage",
                         "locations": [
-                            "eastus",
+                            "[variables('location')]",
                             "westus"
                         ]
                     }
@@ -9953,7 +9955,7 @@
                     {
                         "service": "Microsoft.Storage",
                         "locations": [
-                            "eastus",
+                            "[variables('location')]",
                             "westus"
                         ]
                     }
@@ -10368,7 +10370,7 @@
             "type": "Microsoft.Web/sites",
             "apiVersion": "2021-02-01",
             "name": "[parameters('sites_EventHubRepFunction_name')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ASP_EventHubRepFunction_0373_name'))]"
             ],
@@ -10417,7 +10419,7 @@
             "type": "Microsoft.Web/sites",
             "apiVersion": "2021-02-01",
             "name": "[parameters('sites_teltonikapoc_name')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ASP_AzureGCPMigration_bfb5_name'))]"
             ],
@@ -10466,7 +10468,7 @@
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/ftp')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
             ],
@@ -10478,7 +10480,7 @@
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_teltonikapoc_name'), '/ftp')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
             ],
@@ -10490,7 +10492,7 @@
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/scm')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
             ],
@@ -10502,7 +10504,7 @@
             "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_teltonikapoc_name'), '/scm')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
             ],
@@ -10514,7 +10516,7 @@
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/web')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
             ],
@@ -10593,7 +10595,7 @@
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_teltonikapoc_name'), '/web')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
             ],
@@ -10673,7 +10675,7 @@
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/392806624e8246389dce276d33a290c7')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
             ],
@@ -10692,7 +10694,7 @@
             "type": "Microsoft.Web/sites/functions",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/EventHubTrigger1')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
             ],
@@ -10711,7 +10713,7 @@
             "type": "Microsoft.Web/sites/functions",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_teltonikapoc_name'), '/EventHubTrigger1')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
             ],
@@ -10731,7 +10733,7 @@
             "type": "Microsoft.Web/sites/functions",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_teltonikapoc_name'), '/TimerEventToCosmosTrigger')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
             ],
@@ -10750,7 +10752,7 @@
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/', parameters('sites_EventHubRepFunction_name'), '.azurewebsites.net')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
             ],
@@ -10763,7 +10765,7 @@
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2021-02-01",
             "name": "[concat(parameters('sites_teltonikapoc_name'), '/', parameters('sites_teltonikapoc_name'), '.azurewebsites.net')]",
-            "location": "South India",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
             ],
@@ -10776,7 +10778,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2021-07-01",
             "name": "[parameters('virtualMachines_Aikido_2_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/images', parameters('images_aikido_1_name'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aikido_2416_name'))]"
@@ -10836,7 +10838,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2021-07-01",
             "name": "[parameters('virtualMachines_Aikido_ford_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/images', parameters('images_aikido_1_name'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_aikido_ford401_name'))]"
@@ -10897,7 +10899,7 @@
             "type": "Microsoft.DataMigration/services",
             "apiVersion": "2021-06-30",
             "name": "[parameters('services_Ford_Data_Migration_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_NIC_hpdrk254599xz78qa6gchuvc_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
@@ -11120,7 +11122,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1/iot1policy')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot1')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11137,7 +11139,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2/iot2policy')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot2')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11154,7 +11156,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/listentoeventhub')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11169,7 +11171,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/receive-from-eh-nodejs')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11184,7 +11186,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/send-to-eh-nodejs')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11199,7 +11201,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/senttoeventhub')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11214,7 +11216,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/$Default')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11225,7 +11227,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/$Default')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11236,7 +11238,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1/$Default')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot1')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11247,7 +11249,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2/$Default')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot2')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11258,7 +11260,7 @@
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2021-11-01",
             "name": "[concat(parameters('namespaces_replication_test_name'), '/teltonika/$Default')]",
-            "location": "East US",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'teltonika')]",
                 "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
@@ -11269,7 +11271,7 @@
             "type": "Microsoft.Network/connections",
             "apiVersion": "2020-11-01",
             "name": "[parameters('connections_forddemocoonection_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('virtualNetworkGateways_ford_demo_vnetgateway_name'))]",
                 "[resourceId('Microsoft.Network/localNetworkGateways', parameters('localNetworkGateways_forddemo_localnetwork_name'))]"
@@ -11299,7 +11301,7 @@
             "type": "Microsoft.Network/virtualNetworkGateways",
             "apiVersion": "2020-11-01",
             "name": "[parameters('virtualNetworkGateways_ford_demo_vnetgateway_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ford_demo_vnetgateway_publicIP_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'GatewaySubnet')]"
@@ -11578,7 +11580,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkInterfaces_aikido_1186_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aikido_1_ip_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]",
@@ -11616,7 +11618,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkInterfaces_aikido_2416_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_Aikido_2_ip_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]",
@@ -11654,7 +11656,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkInterfaces_aikido_ford401_name')]",
-            "location": "southindia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_Aikido_ford_ip_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]",
@@ -11692,7 +11694,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkInterfaces_db2_win_azure41_name')]",
-            "location": "eastus",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_db2_azure_ip_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet955_name'), 'default')]",
@@ -11730,7 +11732,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkInterfaces_ford_demo438_name')]",
-            "location": "southeastasia",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ford_demo_ip_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]",
@@ -11771,7 +11773,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-11-01",
             "name": "[parameters('networkInterfaces_kafka_azure772_name')]",
-            "location": "westus2",
+            "location": "[variables('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_kafka_azure_ip_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet144_name'), 'default')]",
