@@ -1,0 +1,219 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_teltonikapoc_name": {
+            "value": "teltonikapoc"
+        },
+        "images_aikido_1_name": {
+            "value": "aikido-1"
+        },
+        "servers_aikdo_name": {
+            "value": "aikdo"
+        },
+        "servers_repl_dest_name": {
+            "value": "repl-dest"
+        },
+        "sites_EventHubRepFunction_name": {
+            "value": "EventHubRepFunction"
+        },
+        "storageAccounts_evthub_name": {
+            "value": "evthub"
+        },
+        "virtualMachines_Aikido_2_name": {
+            "value": "Aikido-2"
+        },
+        "virtualMachines_ford_demo_name": {
+            "value": "ford-demo"
+        },
+        "publicIPAddresses_db2vm_ip_name": {
+            "value": "db2vm-ip"
+        },
+        "snapshots_aikido1_fullimage_name": {
+            "value": "aikido1-fullimage"
+        },
+        "virtualMachines_Aikido_ford_name": {
+            "value": "Aikido-ford"
+        },
+        "virtualMachines_kafka_azure_name": {
+            "value": "kafka-azure"
+        },
+        "servers_test_replication_name": {
+            "value": "test-replication"
+        },
+        "publicIPAddresses_aikido_ip_name": {
+            "value": "aikido-ip"
+        },
+        "namespaces_replication_test_name": {
+            "value": "replication-test"
+        },
+        "storageAccounts_evthubnodejs_name": {
+            "value": "evthubnodejs"
+        },
+        "virtualMachines_db2_win_azure_name": {
+            "value": "db2-win-azure"
+        },
+        "networkInterfaces_aikido_1186_name": {
+            "value": "aikido-1186"
+        },
+        "networkInterfaces_aikido_2416_name": {
+            "value": "aikido-2416"
+        },
+        "publicIPAddresses_aikido_1_ip_name": {
+            "value": "aikido-1-ip"
+        },
+        "publicIPAddresses_Aikido_2_ip_name": {
+            "value": "Aikido-2-ip"
+        },
+        "components_EventHubToCosmosDB_name": {
+            "value": "EventHubToCosmosDB"
+        },
+        "connections_forddemocoonection_name": {
+            "value": "forddemocoonection"
+        },
+        "networkInterfaces_ford_demo438_name": {
+            "value": "ford-demo438"
+        },
+        "publicIPAddresses_db2_azure_ip_name": {
+            "value": "db2-azure-ip"
+        },
+        "publicIPAddresses_ford_demo_ip_name": {
+            "value": "ford-demo-ip"
+        },
+        "virtualNetworks_ford_demo_vnet_name": {
+            "value": "ford-demo-vnet"
+        },
+        "components_eventhubrepfunction_name": {
+            "value": "eventhubrepfunction"
+        },
+        "networkSecurityGroups_db2vm_nsg_name": {
+            "value": "db2vm-nsg"
+        },
+        "storageAccounts_teltonikafmc003_name": {
+            "value": "teltonikafmc003"
+        },
+        "networkInterfaces_aikido_ford401_name": {
+            "value": "aikido-ford401"
+        },
+        "networkInterfaces_kafka_azure772_name": {
+            "value": "kafka-azure772"
+        },
+        "publicIPAddresses_Aikido_ford_ip_name": {
+            "value": "Aikido-ford-ip"
+        },
+        "publicIPAddresses_kafka_azure_ip_name": {
+            "value": "kafka-azure-ip"
+        },
+        "networkInterfaces_db2_win_azure41_name": {
+            "value": "db2-win-azure41"
+        },
+        "services_Ford_Data_Migration_name": {
+            "value": "Ford-Data-Migration"
+        },
+        "networkSecurityGroups_aikido_1_nsg_name": {
+            "value": "aikido-1-nsg"
+        },
+        "networkSecurityGroups_Aikido_2_nsg_name": {
+            "value": "Aikido-2-nsg"
+        },
+        "storageAccounts_sqlvamqrcrrkf6bowu_name": {
+            "value": "sqlvamqrcrrkf6bowu"
+        },
+        "serverfarms_ASP_AzureGCPMigration_817c_name": {
+            "value": "ASP-AzureGCPMigration-817c"
+        },
+        "serverfarms_ASP_AzureGCPMigration_86c4_name": {
+            "value": "ASP-AzureGCPMigration-86c4"
+        },
+        "serverfarms_ASP_AzureGCPMigration_9242_name": {
+            "value": "ASP-AzureGCPMigration-9242"
+        },
+        "serverfarms_ASP_AzureGCPMigration_a09a_name": {
+            "value": "ASP-AzureGCPMigration-a09a"
+        },
+        "serverfarms_ASP_AzureGCPMigration_a1f7_name": {
+            "value": "ASP-AzureGCPMigration-a1f7"
+        },
+        "serverfarms_ASP_AzureGCPMigration_a636_name": {
+            "value": "ASP-AzureGCPMigration-a636"
+        },
+        "serverfarms_ASP_AzureGCPMigration_bfb5_name": {
+            "value": "ASP-AzureGCPMigration-bfb5"
+        },
+        "databaseAccounts_aikidocosmoslab_name": {
+            "value": "aikidocosmoslab"
+        },
+        "networkSecurityGroups_ford_demo_nsg_name": {
+            "value": "ford-demo-nsg"
+        },
+        "virtualNetworks_evthub2_vNet5886669_name": {
+            "value": "evthub2_vNet5886669"
+        },
+        "storageAccounts_eventhubrepfunction_name": {
+            "value": "eventhubrepfunction"
+        },
+        "serverfarms_ASP_EventHubRepFunction_0373_name": {
+            "value": "ASP-EventHubRepFunction-0373"
+        },
+        "networkSecurityGroups_Aikido_ford_nsg_name": {
+            "value": "Aikido-ford-nsg"
+        },
+        "networkSecurityGroups_kafka_azure_nsg_name": {
+            "value": "kafka-azure-nsg"
+        },
+        "networkSecurityGroups_db2_win_azure_nsg_name": {
+            "value": "db2-win-azure-nsgdb2-win-azure-nsg"
+        },
+        "networkSecurityGroups_db2winazurensg855_name": {
+            "value": "db2winazurensg855"
+        },
+        "virtualNetworks_eventhubrep_vNet2888792_name": {
+            "value": "eventhubrep_vNet2888792"
+        },
+        "containerGroups_mysql_on_azure_name": {
+            "value": "mysql-on-azure"
+        },
+        "virtualNetworks_Azure_GCP_Migration_vnet_name": {
+            "value": "Azure_GCP_Migration-vnet"
+        },
+        "localNetworkGateways_forddemo_localnetwork_name": {
+            "value": "forddemo-localnetwork"
+        },
+        "virtualNetworks_Azure_GCP_Migrationvnet144_name": {
+            "value": "Azure_GCP_Migrationvnet144"
+        },
+        "virtualNetworks_Azure_GCP_Migrationvnet955_name": {
+            "value": "Azure_GCP_Migrationvnet955"
+        },
+        "virtualNetworkGateways_ford_demo_vnetgateway_name": {
+            "value": "ford-demo-vnetgateway"
+        },
+        "networkInterfaces_NIC_hpdrk254599xz78qa6gchuvc_name": {
+            "value": "NIC-hpdrk254599xz78qa6gchuvc"
+        },
+        "publicIPAddresses_ford_demo_vnetgateway_publicIP_name": {
+            "value": "ford-demo-vnetgateway-publicIP"
+        },
+        "disks_aikido_1_disk1_9d6cfcc789df49ffbe694531e73c2189_name": {
+            "value": "aikido-1_disk1_9d6cfcc789df49ffbe694531e73c2189"
+        },
+        "smartdetectoralertrules_failure_anomalies___eventhubtocosmosdb_name": {
+            "value": "failure-anomalies-eventhubtocosmosdb"
+        },
+        "smartdetectoralertrules_failure_anomalies___eventhubrepfunction_name": {
+            "value": "failure-anomalies-eventhubrepfunction"
+        },
+        "actiongroups_application_insights_smart_detection_externalid": {
+            "value": null
+        },
+        "snapshots_aikido_1_0_0tojge4cqpy_externalid": {
+            "value": null
+        },
+        "virtualMachines_aikido_externalid": {
+            "value": null
+        },
+        "disks_aikido_OsDisk_1_3cfd7052ac0544f19cfb2eb24a9335d4_externalid": {
+            "value": null
+        }
+    }
+}
