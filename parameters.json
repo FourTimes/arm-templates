@@ -202,18 +202,6 @@
         },
         "smartdetectoralertrules_failure_anomalies___eventhubrepfunction_name": {
             "value": "failure-anomalies-eventhubrepfunction"
-        },
-        "actiongroups_application_insights_smart_detection_externalid": {
-            "value": null
-        },
-        "snapshots_aikido_1_0_0tojge4cqpy_externalid": {
-            "value": null
-        },
-        "virtualMachines_aikido_externalid": {
-            "value": null
-        },
-        "disks_aikido_OsDisk_1_3cfd7052ac0544f19cfb2eb24a9335d4_externalid": {
-            "value": null
         }
     }
 }
