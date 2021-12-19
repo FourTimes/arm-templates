@@ -3,52 +3,52 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_teltonikapoc_name": {
-            "value": "teltonikapoc"
+            "value": "teltonikapocadd"
         },
         "images_aikido_1_name": {
-            "value": "aikido-1"
+            "value": "aikidodd-1"
         },
         "servers_aikdo_name": {
-            "value": "aikdo"
+            "value": "aikdodd"
         },
         "servers_repl_dest_name": {
-            "value": "repl-dest"
+            "value": "repl-destdd"
         },
         "sites_EventHubRepFunction_name": {
-            "value": "EventHubRepFunction"
+            "value": "EventHubRepFunctiondd"
         },
         "storageAccounts_evthub_name": {
-            "value": "evthub"
+            "value": "evthubdd"
         },
         "virtualMachines_Aikido_2_name": {
-            "value": "Aikido-2"
+            "value": "Aikido-2dd"
         },
         "virtualMachines_ford_demo_name": {
-            "value": "ford-demo"
+            "value": "ford-demodd"
         },
         "publicIPAddresses_db2vm_ip_name": {
-            "value": "db2vm-ip"
+            "value": "db2vm-ipdd"
         },
         "snapshots_aikido1_fullimage_name": {
-            "value": "aikido1-fullimage"
+            "value": "aikido1-fullimagedd"
         },
         "virtualMachines_Aikido_ford_name": {
-            "value": "Aikido-ford"
+            "value": "Aikido-forddd"
         },
         "virtualMachines_kafka_azure_name": {
-            "value": "kafka-azure"
+            "value": "kafka-azuredd"
         },
         "servers_test_replication_name": {
-            "value": "test-replication"
+            "value": "test-replicationdd"
         },
         "publicIPAddresses_aikido_ip_name": {
             "value": "aikido-ip"
         },
         "namespaces_replication_test_name": {
-            "value": "replication-test"
+            "value": "replication-testdd"
         },
         "storageAccounts_evthubnodejs_name": {
-            "value": "evthubnodejs"
+            "value": "evthubnodejsdb"
         },
         "virtualMachines_db2_win_azure_name": {
             "value": "db2-win-azure"
@@ -66,7 +66,7 @@
             "value": "Aikido-2-ip"
         },
         "components_EventHubToCosmosDB_name": {
-            "value": "EventHubToCosmosDB"
+            "value": "EventHubToCosmosDBdd"
         },
         "connections_forddemocoonection_name": {
             "value": "forddemocoonection"
@@ -84,13 +84,13 @@
             "value": "ford-demo-vnet"
         },
         "components_eventhubrepfunction_name": {
-            "value": "eventhubrepfunction"
+            "value": "eventhubrepfunctiondd"
         },
         "networkSecurityGroups_db2vm_nsg_name": {
             "value": "db2vm-nsg"
         },
         "storageAccounts_teltonikafmc003_name": {
-            "value": "teltonikafmc003"
+            "value": "teltonikafmc003dd"
         },
         "networkInterfaces_aikido_ford401_name": {
             "value": "aikido-ford401"
@@ -117,7 +117,7 @@
             "value": "Aikido-2-nsg"
         },
         "storageAccounts_sqlvamqrcrrkf6bowu_name": {
-            "value": "sqlvamqrcrrkf6bowu"
+            "value": "sqlvamqrcrrkf6bowudd"
         },
         "serverfarms_ASP_AzureGCPMigration_817c_name": {
             "value": "ASP-AzureGCPMigration-817c"
@@ -141,16 +141,16 @@
             "value": "ASP-AzureGCPMigration-bfb5"
         },
         "databaseAccounts_aikidocosmoslab_name": {
-            "value": "aikidocosmoslab"
+            "value": "aikidocosmoslabadd"
         },
         "networkSecurityGroups_ford_demo_nsg_name": {
             "value": "ford-demo-nsg"
         },
         "virtualNetworks_evthub2_vNet5886669_name": {
-            "value": "evthub2_vNet5886669"
+            "value": "evthub2_vNet5886669dd"
         },
         "storageAccounts_eventhubrepfunction_name": {
-            "value": "eventhubrepfunction"
+            "value": "eventhubrepfunctiondd"
         },
         "serverfarms_ASP_EventHubRepFunction_0373_name": {
             "value": "ASP-EventHubRepFunction-0373"
@@ -171,7 +171,7 @@
             "value": "eventhubrep_vNet2888792"
         },
         "containerGroups_mysql_on_azure_name": {
-            "value": "mysql-on-azure"
+            "value": "mysql-on-azureadd"
         },
         "virtualNetworks_Azure_GCP_Migration_vnet_name": {
             "value": "Azure_GCP_Migration-vnet"

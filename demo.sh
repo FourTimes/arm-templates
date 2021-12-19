@@ -1,1 +1,1 @@
-az deployment group create --name Azure_GCP_Migration_Add --resource-group Azure_GCP_Migration_Add --template-file template.json --parameter-file parameters.json
+az deployment group create --name Azure_GCP_Migration_Adds --resource-group Azure_GCP_Migration_Adds --template-file template.json --parameters parameters.json
