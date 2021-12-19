@@ -1205,21 +1205,21 @@
             }
         },
         {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "apiVersion": "2020-11-01",
-            "name": "[parameters('publicIPAddresses_Aikido_2_ip_name')]",
-            "location": "southindia",
-            "sku": {
-                "name": "Basic",
-                "tier": "Regional"
-            },
-            "properties": {
-                "ipAddress": "13.71.122.249",
-                "publicIPAddressVersion": "IPv4",
-                "publicIPAllocationMethod": "Static",
-                "idleTimeoutInMinutes": 4,
-                "ipTags": []
-            }
+          "type": "Microsoft.Network/publicIPAddresses",
+          "apiVersion": "2020-11-01",
+          "name": "[parameters('publicIPAddresses_Aikido_2_ip_name')]",
+          "location": "[variables('location')]",
+          "sku": {
+            "name": "Basic",
+            "tier": "Regional"
+          },
+          "properties": {
+            "ipAddress": "13.71.122.249",
+            "publicIPAddressVersion": "IPv4",
+            "publicIPAllocationMethod": "Static",
+            "idleTimeoutInMinutes": 4,
+            "ipTags": []
+          }
         },
         {
             "type": "Microsoft.Network/publicIPAddresses",
