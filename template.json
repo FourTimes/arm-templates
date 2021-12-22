@@ -2215,19 +2215,19 @@
         //         "protectedSettings": {}
         //     }
         // },
-        // {
-        //     "type": "Microsoft.DataMigration/services/projects",
-        //     "apiVersion": "2021-06-30",
-        //     "name": "[concat(parameters('services_Ford_Data_Migration_name'), '/datatransfer')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.DataMigration/services', parameters('services_Ford_Data_Migration_name'))]"
-        //     ],
-        //     "properties": {
-        //         "sourcePlatform": "MySQL",
-        //         "targetPlatform": "AzureDbForMySQL"
-        //     }
-        // },
+        {
+            "type": "Microsoft.DataMigration/services/projects",
+            "apiVersion": "2021-06-30",
+            "name": "[concat(parameters('services_Ford_Data_Migration_name'), '/datatransfer')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DataMigration/services', parameters('services_Ford_Data_Migration_name'))]"
+            ],
+            "properties": {
+                "sourcePlatform": "MySQL",
+                "targetPlatform": "AzureDbForMySQL"
+            }
+        },
         {
             "type": "Microsoft.DBforMySQL/servers/firewallRules",
             "apiVersion": "2017-12-01",
@@ -2355,718 +2355,718 @@
                 "retentionDays": 0
             }
         },
-        // {
-        //     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-        //     "apiVersion": "2021-10-15",
-        //     "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/fmcTesting')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //     ],
-        //     "properties": {
-        //         "resource": {
-        //             "id": "fmcTesting"
-        //         }
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-        //     "apiVersion": "2021-10-15",
-        //     "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/ImportDatabase')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //     ],
-        //     "properties": {
-        //         "resource": {
-        //             "id": "ImportDatabase"
-        //         }
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-        //     "apiVersion": "2021-10-15",
-        //     "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/siem')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //     ],
-        //     "properties": {
-        //         "resource": {
-        //             "id": "siem"
-        //         }
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
-        //     "apiVersion": "2021-10-15",
-        //     "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/teltonikadb')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //     ],
-        //     "properties": {
-        //         "resource": {
-        //             "id": "teltonikadb"
-        //         }
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
-        //     "apiVersion": "2021-10-15",
-        //     "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/00000000-0000-0000-0000-000000000001')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //     ],
-        //     "properties": {
-        //         "roleName": "Cosmos DB Built-in Data Reader",
-        //         "type": 0,
-        //         "assignableScopes": [
-        //             "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //         ],
-        //         "permissions": [
-        //             {
-        //                 "dataActions": [
-        //                     "Microsoft.DocumentDB/databaseAccounts/readMetadata",
-        //                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery",
-        //                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed",
-        //                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"
-        //                 ],
-        //                 "notDataActions": []
-        //             }
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
-        //     "apiVersion": "2021-10-15",
-        //     "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/00000000-0000-0000-0000-000000000002')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //     ],
-        //     "properties": {
-        //         "roleName": "Cosmos DB Built-in Data Contributor",
-        //         "type": 0,
-        //         "assignableScopes": [
-        //             "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-        //         ],
-        //         "permissions": [
-        //             {
-        //                 "dataActions": [
-        //                     "Microsoft.DocumentDB/databaseAccounts/readMetadata",
-        //                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*",
-        //                     "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*"
-        //                 ],
-        //                 "notDataActions": []
-        //             }
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/listenaccess')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Listen"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/RootManageSharedAccessKey')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Listen",
-        //             "Manage",
-        //             "Send"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/sendaccess')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Send"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "messageRetentionInDays": 1,
-        //         "partitionCount": 2,
-        //         "status": "Active"
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "messageRetentionInDays": 1,
-        //         "partitionCount": 2,
-        //         "status": "Active"
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "messageRetentionInDays": 1,
-        //         "partitionCount": 2,
-        //         "status": "Active"
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "messageRetentionInDays": 1,
-        //         "partitionCount": 2,
-        //         "status": "Active"
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/teltonika')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "messageRetentionInDays": 1,
-        //         "partitionCount": 2,
-        //         "status": "Active"
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/networkRuleSets",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/default')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "publicNetworkAccess": "Enabled",
-        //         "defaultAction": "Allow",
-        //         "virtualNetworkRules": [],
-        //         "ipRules": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/degradationindependencyduration')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "degradationindependencyduration",
-        //             "DisplayName": "Degradation in dependency duration",
-        //             "Description": "Smart Detection rules notify you of performance anomaly issues.",
-        //             "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/degradationindependencyduration')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "degradationindependencyduration",
-        //             "DisplayName": "Degradation in dependency duration",
-        //             "Description": "Smart Detection rules notify you of performance anomaly issues.",
-        //             "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/degradationinserverresponsetime')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "degradationinserverresponsetime",
-        //             "DisplayName": "Degradation in server response time",
-        //             "Description": "Smart Detection rules notify you of performance anomaly issues.",
-        //             "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/degradationinserverresponsetime')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "degradationinserverresponsetime",
-        //             "DisplayName": "Degradation in server response time",
-        //             "Description": "Smart Detection rules notify you of performance anomaly issues.",
-        //             "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/digestMailConfiguration')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "digestMailConfiguration",
-        //             "DisplayName": "Digest Mail Configuration",
-        //             "Description": "This rule describes the digest mail preferences",
-        //             "HelpUrl": "www.homail.com",
-        //             "IsHidden": true,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/digestMailConfiguration')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "digestMailConfiguration",
-        //             "DisplayName": "Digest Mail Configuration",
-        //             "Description": "This rule describes the digest mail preferences",
-        //             "HelpUrl": "www.homail.com",
-        //             "IsHidden": true,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_billingdatavolumedailyspikeextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_billingdatavolumedailyspikeextension",
-        //             "DisplayName": "Abnormal rise in daily data volume (preview)",
-        //             "Description": "This detection rule automatically analyzes the billing data generated by your application, and can warn you about an unusual increase in your application's billing costs",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/billing-data-volume-daily-spike.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_billingdatavolumedailyspikeextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_billingdatavolumedailyspikeextension",
-        //             "DisplayName": "Abnormal rise in daily data volume (preview)",
-        //             "Description": "This detection rule automatically analyzes the billing data generated by your application, and can warn you about an unusual increase in your application's billing costs",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/billing-data-volume-daily-spike.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_canaryextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_canaryextension",
-        //             "DisplayName": "Canary extension",
-        //             "Description": "Canary extension",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/",
-        //             "IsHidden": true,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_canaryextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_canaryextension",
-        //             "DisplayName": "Canary extension",
-        //             "Description": "Canary extension",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/",
-        //             "IsHidden": true,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_exceptionchangeextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_exceptionchangeextension",
-        //             "DisplayName": "Abnormal rise in exception volume (preview)",
-        //             "Description": "This detection rule automatically analyzes the exceptions thrown in your application, and can warn you about unusual patterns in your exception telemetry.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/abnormal-rise-in-exception-volume.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_exceptionchangeextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_exceptionchangeextension",
-        //             "DisplayName": "Abnormal rise in exception volume (preview)",
-        //             "Description": "This detection rule automatically analyzes the exceptions thrown in your application, and can warn you about unusual patterns in your exception telemetry.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/abnormal-rise-in-exception-volume.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_memoryleakextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_memoryleakextension",
-        //             "DisplayName": "Potential memory leak detected (preview)",
-        //             "Description": "This detection rule automatically analyzes the memory consumption of each process in your application, and can warn you about potential memory leaks or increased memory consumption.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/memory-leak.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_memoryleakextension')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_memoryleakextension",
-        //             "DisplayName": "Potential memory leak detected (preview)",
-        //             "Description": "This detection rule automatically analyzes the memory consumption of each process in your application, and can warn you about potential memory leaks or increased memory consumption.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/memory-leak.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_securityextensionspackage')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_securityextensionspackage",
-        //             "DisplayName": "Potential security issue detected (preview)",
-        //             "Description": "This detection rule automatically analyzes the telemetry generated by your application and detects potential security issues.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/application-security-detection-pack.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_securityextensionspackage')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_securityextensionspackage",
-        //             "DisplayName": "Potential security issue detected (preview)",
-        //             "Description": "This detection rule automatically analyzes the telemetry generated by your application and detects potential security issues.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/application-security-detection-pack.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_traceseveritydetector')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_traceseveritydetector",
-        //             "DisplayName": "Degradation in trace severity ratio (preview)",
-        //             "Description": "This detection rule automatically analyzes the trace logs emitted from your application, and can warn you about unusual patterns in the severity of your trace telemetry.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/degradation-in-trace-severity-ratio.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_traceseveritydetector')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "extension_traceseveritydetector",
-        //             "DisplayName": "Degradation in trace severity ratio (preview)",
-        //             "Description": "This detection rule automatically analyzes the trace logs emitted from your application, and can warn you about unusual patterns in the severity of your trace telemetry.",
-        //             "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/degradation-in-trace-severity-ratio.md",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": true,
-        //             "SupportsEmailNotifications": false
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_eventhubrepfunction_name'), '/longdependencyduration')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "longdependencyduration",
-        //             "DisplayName": "Long dependency duration",
-        //             "Description": "Smart Detection rules notify you of performance anomaly issues.",
-        //             "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
-        // {
-        //     "type": "microsoft.insights/components/ProactiveDetectionConfigs",
-        //     "apiVersion": "2018-05-01-preview",
-        //     "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/longdependencyduration')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
-        //     ],
-        //     "properties": {
-        //         "ruleDefinitions": {
-        //             "Name": "longdependencyduration",
-        //             "DisplayName": "Long dependency duration",
-        //             "Description": "Smart Detection rules notify you of performance anomaly issues.",
-        //             "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
-        //             "IsHidden": false,
-        //             "IsEnabledByDefault": true,
-        //             "IsInPreview": false,
-        //             "SupportsEmailNotifications": true
-        //         },
-        //         "enabled": true,
-        //         "sendEmailsToSubscriptionOwners": true,
-        //         "customEmails": []
-        //     }
-        // },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "apiVersion": "2021-10-15",
+            "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/fmcTesting')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "fmcTesting"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "apiVersion": "2021-10-15",
+            "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/ImportDatabase')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "ImportDatabase"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "apiVersion": "2021-10-15",
+            "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/siem')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "siem"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "apiVersion": "2021-10-15",
+            "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/teltonikadb')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "teltonikadb"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+            "apiVersion": "2021-10-15",
+            "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/00000000-0000-0000-0000-000000000001')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+            ],
+            "properties": {
+                "roleName": "Cosmos DB Built-in Data Reader",
+                "type": 0,
+                "assignableScopes": [
+                    "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+                ],
+                "permissions": [
+                    {
+                        "dataActions": [
+                            "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery",
+                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed",
+                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"
+                        ],
+                        "notDataActions": []
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+            "apiVersion": "2021-10-15",
+            "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/00000000-0000-0000-0000-000000000002')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+            ],
+            "properties": {
+                "roleName": "Cosmos DB Built-in Data Contributor",
+                "type": 0,
+                "assignableScopes": [
+                    "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+                ],
+                "permissions": [
+                    {
+                        "dataActions": [
+                            "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*",
+                            "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*"
+                        ],
+                        "notDataActions": []
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/listenaccess')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/RootManageSharedAccessKey')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen",
+                    "Manage",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/sendaccess')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 2,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 2,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 2,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 2,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/teltonika')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "messageRetentionInDays": 1,
+                "partitionCount": 2,
+                "status": "Active"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/default')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "publicNetworkAccess": "Enabled",
+                "defaultAction": "Allow",
+                "virtualNetworkRules": [],
+                "ipRules": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/degradationindependencyduration')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "degradationindependencyduration",
+                    "DisplayName": "Degradation in dependency duration",
+                    "Description": "Smart Detection rules notify you of performance anomaly issues.",
+                    "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/degradationindependencyduration')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "degradationindependencyduration",
+                    "DisplayName": "Degradation in dependency duration",
+                    "Description": "Smart Detection rules notify you of performance anomaly issues.",
+                    "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/degradationinserverresponsetime')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "degradationinserverresponsetime",
+                    "DisplayName": "Degradation in server response time",
+                    "Description": "Smart Detection rules notify you of performance anomaly issues.",
+                    "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/degradationinserverresponsetime')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "degradationinserverresponsetime",
+                    "DisplayName": "Degradation in server response time",
+                    "Description": "Smart Detection rules notify you of performance anomaly issues.",
+                    "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/digestMailConfiguration')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "digestMailConfiguration",
+                    "DisplayName": "Digest Mail Configuration",
+                    "Description": "This rule describes the digest mail preferences",
+                    "HelpUrl": "www.homail.com",
+                    "IsHidden": true,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/digestMailConfiguration')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "digestMailConfiguration",
+                    "DisplayName": "Digest Mail Configuration",
+                    "Description": "This rule describes the digest mail preferences",
+                    "HelpUrl": "www.homail.com",
+                    "IsHidden": true,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_billingdatavolumedailyspikeextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_billingdatavolumedailyspikeextension",
+                    "DisplayName": "Abnormal rise in daily data volume (preview)",
+                    "Description": "This detection rule automatically analyzes the billing data generated by your application, and can warn you about an unusual increase in your application's billing costs",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/billing-data-volume-daily-spike.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_billingdatavolumedailyspikeextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_billingdatavolumedailyspikeextension",
+                    "DisplayName": "Abnormal rise in daily data volume (preview)",
+                    "Description": "This detection rule automatically analyzes the billing data generated by your application, and can warn you about an unusual increase in your application's billing costs",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/billing-data-volume-daily-spike.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_canaryextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_canaryextension",
+                    "DisplayName": "Canary extension",
+                    "Description": "Canary extension",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/",
+                    "IsHidden": true,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_canaryextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_canaryextension",
+                    "DisplayName": "Canary extension",
+                    "Description": "Canary extension",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/",
+                    "IsHidden": true,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_exceptionchangeextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_exceptionchangeextension",
+                    "DisplayName": "Abnormal rise in exception volume (preview)",
+                    "Description": "This detection rule automatically analyzes the exceptions thrown in your application, and can warn you about unusual patterns in your exception telemetry.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/abnormal-rise-in-exception-volume.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_exceptionchangeextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_exceptionchangeextension",
+                    "DisplayName": "Abnormal rise in exception volume (preview)",
+                    "Description": "This detection rule automatically analyzes the exceptions thrown in your application, and can warn you about unusual patterns in your exception telemetry.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/abnormal-rise-in-exception-volume.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_memoryleakextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_memoryleakextension",
+                    "DisplayName": "Potential memory leak detected (preview)",
+                    "Description": "This detection rule automatically analyzes the memory consumption of each process in your application, and can warn you about potential memory leaks or increased memory consumption.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/memory-leak.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_memoryleakextension')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_memoryleakextension",
+                    "DisplayName": "Potential memory leak detected (preview)",
+                    "Description": "This detection rule automatically analyzes the memory consumption of each process in your application, and can warn you about potential memory leaks or increased memory consumption.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/tree/master/SmartDetection/memory-leak.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_securityextensionspackage')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_securityextensionspackage",
+                    "DisplayName": "Potential security issue detected (preview)",
+                    "Description": "This detection rule automatically analyzes the telemetry generated by your application and detects potential security issues.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/application-security-detection-pack.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_securityextensionspackage')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_securityextensionspackage",
+                    "DisplayName": "Potential security issue detected (preview)",
+                    "Description": "This detection rule automatically analyzes the telemetry generated by your application and detects potential security issues.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/application-security-detection-pack.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/extension_traceseveritydetector')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_traceseveritydetector",
+                    "DisplayName": "Degradation in trace severity ratio (preview)",
+                    "Description": "This detection rule automatically analyzes the trace logs emitted from your application, and can warn you about unusual patterns in the severity of your trace telemetry.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/degradation-in-trace-severity-ratio.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/extension_traceseveritydetector')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "extension_traceseveritydetector",
+                    "DisplayName": "Degradation in trace severity ratio (preview)",
+                    "Description": "This detection rule automatically analyzes the trace logs emitted from your application, and can warn you about unusual patterns in the severity of your trace telemetry.",
+                    "HelpUrl": "https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SmartDetection/degradation-in-trace-severity-ratio.md",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": true,
+                    "SupportsEmailNotifications": false
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_eventhubrepfunction_name'), '/longdependencyduration')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_eventhubrepfunction_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "longdependencyduration",
+                    "DisplayName": "Long dependency duration",
+                    "Description": "Smart Detection rules notify you of performance anomaly issues.",
+                    "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
+        {
+            "type": "microsoft.insights/components/ProactiveDetectionConfigs",
+            "apiVersion": "2018-05-01-preview",
+            "name": "[concat(parameters('components_EventHubToCosmosDB_name'), '/longdependencyduration')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_EventHubToCosmosDB_name'))]"
+            ],
+            "properties": {
+                "ruleDefinitions": {
+                    "Name": "longdependencyduration",
+                    "DisplayName": "Long dependency duration",
+                    "Description": "Smart Detection rules notify you of performance anomaly issues.",
+                    "HelpUrl": "https://docs.microsoft.com/en-us/azure/application-insights/app-insights-proactive-performance-diagnostics",
+                    "IsHidden": false,
+                    "IsEnabledByDefault": true,
+                    "IsInPreview": false,
+                    "SupportsEmailNotifications": true
+                },
+                "enabled": true,
+                "sendEmailsToSubscriptionOwners": true,
+                "customEmails": []
+            }
+        },
         {
             "type": "microsoft.insights/components/ProactiveDetectionConfigs",
             "apiVersion": "2018-05-01-preview",
@@ -4901,26 +4901,26 @@
         //         "licenseType": "Windows_Client"
         //     }
         // },
-        // {
-        //     "type": "Microsoft.DataMigration/services",
-        //     "apiVersion": "2021-06-30",
-        //     "name": "[parameters('services_Ford_Data_Migration_name')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_NIC_hpdrk254599xz78qa6gchuvc_name'))]",
-        //         "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
-        //     ],
-        //     "sku": {
-        //         "name": "Standard_1vCores",
-        //         "tier": "Standard",
-        //         "size": "1 vCores"
-        //     },
-        //     "kind": "Cloud",
-        //     "properties": {
-        //         "virtualNicId": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_NIC_hpdrk254599xz78qa6gchuvc_name'))]",
-        //         "virtualSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
-        //     }
-        // },
+        {
+            "type": "Microsoft.DataMigration/services",
+            "apiVersion": "2021-06-30",
+            "name": "[parameters('services_Ford_Data_Migration_name')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                // "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_NIC_hpdrk254599xz78qa6gchuvc_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
+            ],
+            "sku": {
+                "name": "Standard_1vCores",
+                "tier": "Standard",
+                "size": "1 vCores"
+            },
+            "kind": "Cloud",
+            "properties": {
+                // "virtualNicId": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_NIC_hpdrk254599xz78qa6gchuvc_name'))]",
+                "virtualSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
+            }
+        },
         // {
         //     "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
         //     "apiVersion": "2021-10-15",
@@ -5124,155 +5124,100 @@
         //         }
         //     }
         // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1/iot1policy')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot1')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Manage",
-        //             "Listen",
-        //             "Send"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2/iot2policy')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot2')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Manage",
-        //             "Listen",
-        //             "Send"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/listentoeventhub')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Listen"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/receive-from-eh-nodejs')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Listen"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/send-to-eh-nodejs')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Send"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/senttoeventhub')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {
-        //         "rights": [
-        //             "Send"
-        //         ]
-        //     }
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/$Default')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {}
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/$Default')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {}
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1/$Default')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot1')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {}
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2/$Default')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot2')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {}
-        // },
-        // {
-        //     "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
-        //     "apiVersion": "2021-11-01",
-        //     "name": "[concat(parameters('namespaces_replication_test_name'), '/teltonika/$Default')]",
-        //     "location": "[variables('location')]",
-        //     "dependsOn": [
-        //         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'teltonika')]",
-        //         "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
-        //     ],
-        //     "properties": {}
-        // },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/iot1/iot1policy')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot1')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Listen",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/iot2/iot2policy')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'iot2')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Manage",
+                    "Listen",
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/listentoeventhub')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/receive-from-eh-nodejs')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Listen"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh-nodejs/send-to-eh-nodejs')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh-nodejs')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Send"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+            "apiVersion": "2021-11-01",
+            "name": "[concat(parameters('namespaces_replication_test_name'), '/azure-eh/senttoeventhub')]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_replication_test_name'), 'azure-eh')]",
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('namespaces_replication_test_name'))]"
+            ],
+            "properties": {
+                "rights": [
+                    "Send"
+                ]
+            }
+        },
         {
             "type": "Microsoft.Network/connections",
             "apiVersion": "2020-11-01",
