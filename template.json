@@ -277,14 +277,6 @@
     "snapshots_aikido_1_0_0tojge4cqpy_externalid": {
       "defaultValue": "/subscriptions/3387f4fe-efd5-44e2-a4a2-4581ab04bf99/resourceGroups/Azure_GCP_Migration/providers/Microsoft.Compute/snapshots/aikido-1_0_0tojge4cqpy",
       "type": "String"
-    },
-    "virtualMachines_aikido_externalid": {
-      "defaultValue": "/subscriptions/3387f4fe-efd5-44e2-a4a2-4581ab04bf99/resourceGroups/Azure_GCP_Migration/providers/Microsoft.Compute/virtualMachines/aikido",
-      "type": "String"
-    },
-    "disks_aikido_OsDisk_1_3cfd7052ac0544f19cfb2eb24a9335d4_externalid": {
-      "defaultValue": "/subscriptions/3387f4fe-efd5-44e2-a4a2-4581ab04bf99/resourceGroups/AZURE_GCP_MIGRATION/providers/Microsoft.Compute/disks/aikido_OsDisk_1_3cfd7052ac0544f19cfb2eb24a9335d4",
-      "type": "String"
     }
   },
   "variables": {
@@ -318,32 +310,32 @@
         "diskState": "Unattached"
       }
     },
-    {
-      "type": "Microsoft.Compute/images",
-      "apiVersion": "2021-07-01",
-      "name": "[parameters('images_aikido_1_name')]",
-      "location": "[variables('location')]",
-      "properties": {
-        "sourceVirtualMachine": {
-          "id": "[parameters('virtualMachines_aikido_externalid')]"
-        },
-        "storageProfile": {
-          "osDisk": {
-            "osType": "Windows",
-            "osState": "Generalized",
-            "diskSizeGB": 127,
-            "managedDisk": {
-              "id": "[parameters('disks_aikido_OsDisk_1_3cfd7052ac0544f19cfb2eb24a9335d4_externalid')]"
-            },
-            "caching": "ReadWrite",
-            "storageAccountType": "StandardSSD_LRS"
-          },
-          "dataDisks": [],
-          "zoneResilient": false
-        },
-        "hyperVGeneration": "V1"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Compute/images",
+    //   "apiVersion": "2021-07-01",
+    //   "name": "[parameters('images_aikido_1_name')]",
+    //   "location": "[variables('location')]",
+    //   "properties": {
+    //     "sourceVirtualMachine": {
+    //       "id": "[parameters('virtualMachines_aikido_externalid')]"
+    //     },
+    //     "storageProfile": {
+    //       "osDisk": {
+    //         "osType": "Windows",
+    //         "osState": "Generalized",
+    //         "diskSizeGB": 127,
+    //         "managedDisk": {
+    //           "id": "[parameters('disks_aikido_OsDisk_1_3cfd7052ac0544f19cfb2eb24a9335d4_externalid')]"
+    //         },
+    //         "caching": "ReadWrite",
+    //         "storageAccountType": "StandardSSD_LRS"
+    //       },
+    //       "dataDisks": [],
+    //       "zoneResilient": false
+    //     },
+    //     "hyperVGeneration": "V1"
+    //   }
+    // },
     {
       "type": "Microsoft.ContainerInstance/containerGroups",
       "apiVersion": "2021-09-01",
