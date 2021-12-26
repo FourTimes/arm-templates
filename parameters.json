@@ -24,7 +24,7 @@
             "value": "Aikido-2dd"
         },
         "virtualMachines_ford_demo_name": {
-            "value": "ford-demodd"
+            "value": "ford-demo"
         },
         "publicIPAddresses_db2vm_ip_name": {
             "value": "db2vm-ipdd"
@@ -33,10 +33,10 @@
             "value": "aikido1-fullimagedd"
         },
         "virtualMachines_Aikido_ford_name": {
-            "value": "Aikido-forddd"
+            "value": "Aikido-ford"
         },
         "virtualMachines_kafka_azure_name": {
-            "value": "kafka-azuredd"
+            "value": "kafka-azure"
         },
         "servers_test_replication_name": {
             "value": "test-replicationdd"
@@ -54,10 +54,10 @@
             "value": "db2-win-azure"
         },
         "networkInterfaces_aikido_1186_name": {
-            "value": "aikido-1186"
+            "value": "aikido-1"
         },
         "networkInterfaces_aikido_2416_name": {
-            "value": "aikido-2416"
+            "value": "aikido-2"
         },
         "publicIPAddresses_aikido_1_ip_name": {
             "value": "aikido-1-ip"
@@ -72,7 +72,7 @@
             "value": "forddemocoonection"
         },
         "networkInterfaces_ford_demo438_name": {
-            "value": "ford-demo438"
+            "value": "ford-demo"
         },
         "publicIPAddresses_db2_azure_ip_name": {
             "value": "db2-azure-ip"
@@ -93,10 +93,10 @@
             "value": "teltonikafmc003dd"
         },
         "networkInterfaces_aikido_ford401_name": {
-            "value": "aikido-ford401"
+            "value": "aikido-ford"
         },
         "networkInterfaces_kafka_azure772_name": {
-            "value": "kafka-azure772"
+            "value": "kafka-azure"
         },
         "publicIPAddresses_Aikido_ford_ip_name": {
             "value": "Aikido-ford-ip"
@@ -105,7 +105,7 @@
             "value": "kafka-azure-ip"
         },
         "networkInterfaces_db2_win_azure41_name": {
-            "value": "db2-win-azure41"
+            "value": "db2-win-azure"
         },
         "services_Ford_Data_Migration_name": {
             "value": "Ford-Data-Migration"
@@ -171,7 +171,7 @@
             "value": "eventhubrep_vNet2888792"
         },
         "containerGroups_mysql_on_azure_name": {
-            "value": "mysql-on-azureadd"
+            "value": "mysql-on-azureads"
         },
         "virtualNetworks_Azure_GCP_Migration_vnet_name": {
             "value": "Azure_GCP_Migration-vnet"

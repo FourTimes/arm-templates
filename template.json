@@ -275,7 +275,7 @@
       "type": "String"
     },
     "snapshots_aikido_1_0_0tojge4cqpy_externalid": {
-      "defaultValue": "/subscriptions/3387f4fe-efd5-44e2-a4a2-4581ab04bf99/resourceGroups/Azure_GCP_Migration/providers/Microsoft.Compute/snapshots/aikido-1_0_0tojge4cqpy",
+      "defaultValue": "/subscriptions/3387f4fe-efd5-44e2-a4a2-4581ab04bf99/resourceGroups/Azure_GCP_Migration_Adds/providers/Microsoft.Compute/snapshots/aikido-1-snapshot",
       "type": "String"
     }
   },
@@ -283,33 +283,63 @@
     "location": "eastus"
   },
   "resources": [
-    {
-      "type": "Microsoft.Compute/disks",
-      "apiVersion": "2021-04-01",
-      "name": "[parameters('disks_aikido_1_disk1_9d6cfcc789df49ffbe694531e73c2189_name')]",
-      "location": "[variables('location')]",
-      "sku": {
-        "name": "StandardSSD_LRS",
-        "tier": "Standard"
-      },
-      "properties": {
-        "osType": "Windows",
-        "hyperVGeneration": "V1",
-        "creationData": {
-          "createOption": "Copy",
-          "sourceResourceId": "[parameters('snapshots_aikido_1_0_0tojge4cqpy_externalid')]"
-        },
-        "diskSizeGB": 127,
-        "diskIOPSReadWrite": 500,
-        "diskMBpsReadWrite": 60,
-        "encryption": {
-          "type": "EncryptionAtRestWithPlatformKey"
-        },
-        "networkAccessPolicy": "AllowAll",
-        "publicNetworkAccess": "Enabled",
-        "diskState": "Unattached"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Compute/disks",
+    //   "apiVersion": "2021-04-01",
+    //   "name": "[parameters('disks_aikido_1_disk1_9d6cfcc789df49ffbe694531e73c2189_name')]",
+    //   "location": "[variables('location')]",
+    //   "sku": {
+    //     "name": "StandardSSD_LRS",
+    //     "tier": "Standard"
+    //   },
+    //   "properties": {
+    //     "osType": "Windows",
+    //     "hyperVGeneration": "V1",
+    //     "creationData": {
+    //       "createOption": "Copy",
+    //       "sourceResourceId": "[parameters('snapshots_aikido_1_0_0tojge4cqpy_externalid')]"
+    //     },
+    //     "diskSizeGB": 127,
+    //     "diskIOPSReadWrite": 500,
+    //     "diskMBpsReadWrite": 60,
+    //     "encryption": {
+    //       {
+    //         "type": "Microsoft.Compute/snapshots",
+    //         "apiVersion": "2021-04-01",
+    //         "name": "aikido-1-snapshot",
+    //         "location": "[variables('location')]",
+    //         "dependsOn": [
+    //           "[resourceId('Microsoft.Compute/disks', parameters('disks_aikido_1_disk1_9d6cfcc789df49ffbe694531e73c2189_name'))]"
+    //         ],
+    //         "sku": {
+    //           "name": "Standard_LRS",
+    //           "tier": "Standard"
+    //         },
+    //         "properties": {
+    //           "osType": "Windows",
+    //           "hyperVGeneration": "V1",
+    //           "creationData": {
+    //             "createOption": "Copy",
+    //             "sourceResourceId": "[resourceId('Microsoft.Compute/disks', parameters('disks_aikido_1_disk1_9d6cfcc789df49ffbe694531e73c2189_name'))]"
+    //           },
+    //           "diskSizeGB": 127,
+    //           "encryption": {
+    //             "type": "EncryptionAtRestWithPlatformKey"
+    //           },
+    //           "incremental": false,
+    //           "networkAccessPolicy": "AllowAll",
+    //           "publicNetworkAccess": "Enabled",
+    //           "diskState": "Unattached"
+    //         }
+    //       },
+    //       "type": "EncryptionAtRestWithPlatformKey"
+    //     },
+    //     "networkAccessPolicy": "AllowAll",
+    //     "publicNetworkAccess": "Enabled",
+    //     "diskState": "Unattached"
+    //   }
+    // },
+
     // {
     //   "type": "Microsoft.Compute/images",
     //   "apiVersion": "2021-07-01",
@@ -394,8 +424,7 @@
               "port": 3306
             }
           ],
-          "type": "Public",
-          "dnsNameLabel": "azuremysql"
+          "type": "Public"
         },
         "osType": "Linux"
       }
@@ -412,6 +441,8 @@
         "capacity": 4
       },
       "properties": {
+        "administratorLogin": "useradmin",
+        "administratorLoginPassword": "Passwdqsaa212",
         "storageProfile": {
           "storageMB": 102400,
           "backupRetentionDays": 7,
@@ -548,8 +579,8 @@
         "env": "poc"
       },
       "sku": {
-        "name": "Basic",
-        "tier": "Basic",
+        "name": "Standard",
+        "tier": "Standard",
         "capacity": 1
       },
       "properties": {
@@ -1208,9 +1239,8 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "13.71.122.249",
         "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Static",
+        "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
         "ipTags": []
       }
@@ -1225,7 +1255,6 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "20.44.54.48",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
@@ -1242,9 +1271,8 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "52.172.97.16",
         "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Static",
+        "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
         "ipTags": []
       }
@@ -1259,7 +1287,6 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "13.90.57.83",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
@@ -1295,7 +1322,6 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "13.76.82.102",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
@@ -1312,7 +1338,6 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "137.116.144.174",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
@@ -1329,7 +1354,6 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "20.112.100.64",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
@@ -3853,9 +3877,6 @@
         "tier": "Standard"
       },
       "properties": {
-        "protocolSettings": {
-          "smb": {}
-        },
         "cors": {
           "corsRules": []
         },
@@ -3877,9 +3898,6 @@
         "tier": "Standard"
       },
       "properties": {
-        "protocolSettings": {
-          "smb": {}
-        },
         "cors": {
           "corsRules": []
         },
@@ -3901,9 +3919,6 @@
         "tier": "Standard"
       },
       "properties": {
-        "protocolSettings": {
-          "smb": {}
-        },
         "cors": {
           "corsRules": []
         },
@@ -3925,9 +3940,6 @@
         "tier": "Standard"
       },
       "properties": {
-        "protocolSettings": {
-          "smb": {}
-        },
         "cors": {
           "corsRules": []
         },
@@ -3949,9 +3961,6 @@
         "tier": "Standard"
       },
       "properties": {
-        "protocolSettings": {
-          "smb": {}
-        },
         "cors": {
           "corsRules": []
         },
@@ -4384,7 +4393,7 @@
             "description": "Allow all access"
           }
         ],
-        "scmIpSecurityRestrictionsUseMain": false,
+        "FsnascmIpSecurityRestrictionsUseMain": false,
         "http20Enabled": false,
         "minTlsVersion": "1.2",
         "scmMinTlsVersion": "1.0",
@@ -4415,90 +4424,90 @@
         "active": true
       }
     },
-    {
-      "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/EventHubTrigger1')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
-      ],
-      "properties": {
-        "script_root_path_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/",
-        "script_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/index.js",
-        "config_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/function.json",
-        "test_data_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/data/Functions/sampledata/EventHubTrigger1.dat",
-        "href": "https://eventhubrepfunction.azurewebsites.net/admin/functions/EventHubTrigger1",
-        "config": {},
-        "language": "node",
-        "isDisabled": false
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('sites_teltonikapoc_name'), '/EventHubTrigger1')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
-      ],
-      "properties": {
-        "script_root_path_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/",
-        "script_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/index.js",
-        "config_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/function.json",
-        "test_data_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/data/Functions/sampledata/EventHubTrigger1.dat",
-        "href": "https://teltonikapoc.azurewebsites.net/admin/functions/EventHubTrigger1",
-        "config": {},
-        "test_data": "{ id: \"03b79899-831b-4529-9dbc-2fc347651d25\", \"longitude\": 80.1197866, \"latitude\": 12.9440616, \"altitude\": 10, \"angle\": 54, \"satellites\": 10, \"speed\": 0 }",
-        "language": "node",
-        "isDisabled": false
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('sites_teltonikapoc_name'), '/TimerEventToCosmosTrigger')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
-      ],
-      "properties": {
-        "script_root_path_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/TimerEventToCosmosTrigger/",
-        "script_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/TimerEventToCosmosTrigger/index.js",
-        "config_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/TimerEventToCosmosTrigger/function.json",
-        "test_data_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/data/Functions/sampledata/TimerEventToCosmosTrigger.dat",
-        "href": "https://teltonikapoc.azurewebsites.net/admin/functions/TimerEventToCosmosTrigger",
-        "config": {},
-        "language": "node",
-        "isDisabled": false
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/hostNameBindings",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/', parameters('sites_EventHubRepFunction_name'), '.azurewebsites.net')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
-      ],
-      "properties": {
-        "siteName": "EventHubRepFunction",
-        "hostNameType": "Verified"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/hostNameBindings",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('sites_teltonikapoc_name'), '/', parameters('sites_teltonikapoc_name'), '.azurewebsites.net')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
-      ],
-      "properties": {
-        "siteName": "teltonikapoc",
-        "hostNameType": "Verified"
-      }
-    },
+    // {
+    //   "type": "Microsoft.Web/sites/functions",
+    //   "apiVersion": "2021-02-01",
+    //   "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/EventHubTrigger1')]",
+    //   "location": "[variables('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
+    //   ],
+    //   "properties": {
+    //     "script_root_path_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/",
+    //     "script_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/index.js",
+    //     "config_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/function.json",
+    //     "test_data_href": "https://eventhubrepfunction.azurewebsites.net/admin/vfs/data/Functions/sampledata/EventHubTrigger1.dat",
+    //     "href": "https://eventhubrepfunction.azurewebsites.net/admin/functions/EventHubTrigger1",
+    //     "config": {},
+    //     "language": "node",
+    //     "isDisabled": false
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Web/sites/functions",
+    //   "apiVersion": "2021-02-01",
+    //   "name": "[concat(parameters('sites_teltonikapoc_name'), '/EventHubTrigger1')]",
+    //   "location": "[variables('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
+    //   ],
+    //   "properties": {
+    //     "script_root_path_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/",
+    //     "script_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/index.js",
+    //     "config_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/EventHubTrigger1/function.json",
+    //     "test_data_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/data/Functions/sampledata/EventHubTrigger1.dat",
+    //     "href": "https://teltonikapoc.azurewebsites.net/admin/functions/EventHubTrigger1",
+    //     "config": {},
+    //     "test_data": "{ id: \"03b79899-831b-4529-9dbc-2fc347651d25\", \"longitude\": 80.1197866, \"latitude\": 12.9440616, \"altitude\": 10, \"angle\": 54, \"satellites\": 10, \"speed\": 0 }",
+    //     "language": "node",
+    //     "isDisabled": false
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Web/sites/functions",
+    //   "apiVersion": "2021-02-01",
+    //   "name": "[concat(parameters('sites_teltonikapoc_name'), '/TimerEventToCosmosTrigger')]",
+    //   "location": "[variables('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
+    //   ],
+    //   "properties": {
+    //     "script_root_path_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/TimerEventToCosmosTrigger/",
+    //     "script_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/TimerEventToCosmosTrigger/index.js",
+    //     "config_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/site/wwwroot/TimerEventToCosmosTrigger/function.json",
+    //     "test_data_href": "https://teltonikapoc.azurewebsites.net/admin/vfs/data/Functions/sampledata/TimerEventToCosmosTrigger.dat",
+    //     "href": "https://teltonikapoc.azurewebsites.net/admin/functions/TimerEventToCosmosTrigger",
+    //     "config": {},
+    //     "language": "node",
+    //     "isDisabled": false
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Web/sites/hostNameBindings",
+    //   "apiVersion": "2021-02-01",
+    //   "name": "[concat(parameters('sites_EventHubRepFunction_name'), '/', parameters('sites_EventHubRepFunction_name'), '.azurewebsites.net')]",
+    //   "location": "[variables('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/sites', parameters('sites_EventHubRepFunction_name'))]"
+    //   ],
+    //   "properties": {
+    //     "siteName": "EventHubRepFunction",
+    //     "hostNameType": "Verified"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Web/sites/hostNameBindings",
+    //   "apiVersion": "2021-02-01",
+    //   "name": "[concat(parameters('sites_teltonikapoc_name'), '/', parameters('sites_teltonikapoc_name'), '.azurewebsites.net')]",
+    //   "location": "[variables('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Web/sites', parameters('sites_teltonikapoc_name'))]"
+    //   ],
+    //   "properties": {
+    //     "siteName": "teltonikapoc",
+    //     "hostNameType": "Verified"
+    //   }
+    // },
     {
       "type": "Microsoft.DataMigration/services",
       "apiVersion": "2021-06-30",
@@ -4517,199 +4526,199 @@
         "virtualSubnetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
       }
     },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-      "apiVersion": "2021-10-15",
-      "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/ImportDatabase/AikidoLogs')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'ImportDatabase')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "AikidoLogs",
-          "indexingPolicy": {
-            "indexingMode": "consistent",
-            "automatic": true,
-            "includedPaths": [
-              {
-                "path": "/*"
-              }
-            ],
-            "excludedPaths": [
-              {
-                "path": "/\"_etag\"/?"
-              }
-            ]
-          },
-          "partitionKey": {
-            "paths": ["/logs"],
-            "kind": "Hash"
-          },
-          "uniqueKeyPolicy": {
-            "uniqueKeys": []
-          },
-          "conflictResolutionPolicy": {
-            "mode": "LastWriterWins",
-            "conflictResolutionPath": "/_ts"
-          }
-        }
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-      "apiVersion": "2021-10-15",
-      "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/siem/firewall_raw_log')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'siem')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "firewall_raw_log",
-          "indexingPolicy": {
-            "indexingMode": "consistent",
-            "automatic": true,
-            "includedPaths": [
-              {
-                "path": "/*"
-              }
-            ],
-            "excludedPaths": [
-              {
-                "path": "/\"_etag\"/?"
-              }
-            ]
-          },
-          "partitionKey": {
-            "paths": ["/id"],
-            "kind": "Hash"
-          },
-          "uniqueKeyPolicy": {
-            "uniqueKeys": []
-          },
-          "conflictResolutionPolicy": {
-            "mode": "LastWriterWins",
-            "conflictResolutionPath": "/_ts"
-          }
-        }
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-      "apiVersion": "2021-10-15",
-      "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/fmcTesting/fmc001')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'fmcTesting')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "fmc001",
-          "indexingPolicy": {
-            "indexingMode": "consistent",
-            "automatic": true,
-            "includedPaths": [
-              {
-                "path": "/*"
-              }
-            ],
-            "excludedPaths": [
-              {
-                "path": "/\"_etag\"/?"
-              }
-            ]
-          },
-          "partitionKey": {
-            "paths": ["/_partitionKey"],
-            "kind": "Hash",
-            "version": 2
-          },
-          "conflictResolutionPolicy": {
-            "mode": "LastWriterWins",
-            "conflictResolutionPath": "/_ts"
-          }
-        }
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-      "apiVersion": "2021-10-15",
-      "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/teltonikadb/teltonikacont')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'teltonikadb')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "teltonikacont",
-          "indexingPolicy": {
-            "indexingMode": "consistent",
-            "automatic": true,
-            "includedPaths": [
-              {
-                "path": "/*"
-              }
-            ],
-            "excludedPaths": [
-              {
-                "path": "/\"_etag\"/?"
-              }
-            ]
-          },
-          "partitionKey": {
-            "paths": ["/pk"],
-            "kind": "Hash"
-          },
-          "uniqueKeyPolicy": {
-            "uniqueKeys": []
-          },
-          "conflictResolutionPolicy": {
-            "mode": "LastWriterWins",
-            "conflictResolutionPath": "/_ts"
-          }
-        }
-      }
-    },
-    {
-      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
-      "apiVersion": "2021-10-15",
-      "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/siem/test')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'siem')]",
-        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
-      ],
-      "properties": {
-        "resource": {
-          "id": "test",
-          "indexingPolicy": {
-            "indexingMode": "consistent",
-            "automatic": true,
-            "includedPaths": [
-              {
-                "path": "/*"
-              }
-            ],
-            "excludedPaths": [
-              {
-                "path": "/\"_etag\"/?"
-              }
-            ]
-          },
-          "partitionKey": {
-            "paths": ["/id"],
-            "kind": "Hash"
-          },
-          "uniqueKeyPolicy": {
-            "uniqueKeys": []
-          },
-          "conflictResolutionPolicy": {
-            "mode": "LastWriterWins",
-            "conflictResolutionPath": "/_ts"
-          }
-        }
-      }
-    },
+    // {
+    //   "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+    //   "apiVersion": "2021-10-15",
+    //   "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/ImportDatabase/AikidoLogs')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'ImportDatabase')]",
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+    //   ],
+    //   "properties": {
+    //     "resource": {
+    //       "id": "AikidoLogs",
+    //       "indexingPolicy": {
+    //         "indexingMode": "consistent",
+    //         "automatic": true,
+    //         "includedPaths": [
+    //           {
+    //             "path": "/*"
+    //           }
+    //         ],
+    //         "excludedPaths": [
+    //           {
+    //             "path": "/\"_etag\"/?"
+    //           }
+    //         ]
+    //       },
+    //       "partitionKey": {
+    //         "paths": ["/logs"],
+    //         "kind": "Hash"
+    //       },
+    //       "uniqueKeyPolicy": {
+    //         "uniqueKeys": []
+    //       },
+    //       "conflictResolutionPolicy": {
+    //         "mode": "LastWriterWins",
+    //         "conflictResolutionPath": "/_ts"
+    //       }
+    //     }
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+    //   "apiVersion": "2021-10-15",
+    //   "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/siem/firewall_raw_log')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'siem')]",
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+    //   ],
+    //   "properties": {
+    //     "resource": {
+    //       "id": "firewall_raw_log",
+    //       "indexingPolicy": {
+    //         "indexingMode": "consistent",
+    //         "automatic": true,
+    //         "includedPaths": [
+    //           {
+    //             "path": "/*"
+    //           }
+    //         ],
+    //         "excludedPaths": [
+    //           {
+    //             "path": "/\"_etag\"/?"
+    //           }
+    //         ]
+    //       },
+    //       "partitionKey": {
+    //         "paths": ["/id"],
+    //         "kind": "Hash"
+    //       },
+    //       "uniqueKeyPolicy": {
+    //         "uniqueKeys": []
+    //       },
+    //       "conflictResolutionPolicy": {
+    //         "mode": "LastWriterWins",
+    //         "conflictResolutionPath": "/_ts"
+    //       }
+    //     }
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+    //   "apiVersion": "2021-10-15",
+    //   "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/fmcTesting/fmc001')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'fmcTesting')]",
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+    //   ],
+    //   "properties": {
+    //     "resource": {
+    //       "id": "fmc001",
+    //       "indexingPolicy": {
+    //         "indexingMode": "consistent",
+    //         "automatic": true,
+    //         "includedPaths": [
+    //           {
+    //             "path": "/*"
+    //           }
+    //         ],
+    //         "excludedPaths": [
+    //           {
+    //             "path": "/\"_etag\"/?"
+    //           }
+    //         ]
+    //       },
+    //       "partitionKey": {
+    //         "paths": ["/_partitionKey"],
+    //         "kind": "Hash",
+    //         "version": 2
+    //       },
+    //       "conflictResolutionPolicy": {
+    //         "mode": "LastWriterWins",
+    //         "conflictResolutionPath": "/_ts"
+    //       }
+    //     }
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+    //   "apiVersion": "2021-10-15",
+    //   "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/teltonikadb/teltonikacont')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'teltonikadb')]",
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+    //   ],
+    //   "properties": {
+    //     "resource": {
+    //       "id": "teltonikacont",
+    //       "indexingPolicy": {
+    //         "indexingMode": "consistent",
+    //         "automatic": true,
+    //         "includedPaths": [
+    //           {
+    //             "path": "/*"
+    //           }
+    //         ],
+    //         "excludedPaths": [
+    //           {
+    //             "path": "/\"_etag\"/?"
+    //           }
+    //         ]
+    //       },
+    //       "partitionKey": {
+    //         "paths": ["/pk"],
+    //         "kind": "Hash"
+    //       },
+    //       "uniqueKeyPolicy": {
+    //         "uniqueKeys": []
+    //       },
+    //       "conflictResolutionPolicy": {
+    //         "mode": "LastWriterWins",
+    //         "conflictResolutionPath": "/_ts"
+    //       }
+    //     }
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+    //   "apiVersion": "2021-10-15",
+    //   "name": "[concat(parameters('databaseAccounts_aikidocosmoslab_name'), '/siem/test')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('databaseAccounts_aikidocosmoslab_name'), 'siem')]",
+    //     "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_aikidocosmoslab_name'))]"
+    //   ],
+    //   "properties": {
+    //     "resource": {
+    //       "id": "test",
+    //       "indexingPolicy": {
+    //         "indexingMode": "consistent",
+    //         "automatic": true,
+    //         "includedPaths": [
+    //           {
+    //             "path": "/*"
+    //           }
+    //         ],
+    //         "excludedPaths": [
+    //           {
+    //             "path": "/\"_etag\"/?"
+    //           }
+    //         ]
+    //       },
+    //       "partitionKey": {
+    //         "paths": ["/id"],
+    //         "kind": "Hash"
+    //       },
+    //       "uniqueKeyPolicy": {
+    //         "uniqueKeys": []
+    //       },
+    //       "conflictResolutionPolicy": {
+    //         "mode": "LastWriterWins",
+    //         "conflictResolutionPath": "/_ts"
+    //       }
+    //     }
+    //   }
+    // },
     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('virtualMachines_db2_win_azure_name')]",
@@ -4868,7 +4877,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2021-07-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('virtualMachines_kafka_azure_name')]",
       "location": "[variables('location')]",
       "dependsOn": [
@@ -4879,35 +4888,26 @@
           "vmSize": "Standard_D2s_v3"
         },
         "storageProfile": {
-          "imageReference": {
-            "publisher": "Canonical",
-            "offer": "UbuntuServer",
-            "sku": "18.04-LTS",
-            "version": "latest"
-          },
           "osDisk": {
             "createOption": "FromImage",
             "managedDisk": {
               "storageAccountType": "StandardSSD_LRS"
             }
           },
-          "dataDisks": []
+          "imageReference": {
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
+          }
         },
         "osProfile": {
           "computerName": "[parameters('virtualMachines_kafka_azure_name')]",
           "adminUsername": "adminuser",
           "adminPassword": "Password!12",
           "linuxConfiguration": {
-            "disablePasswordAuthentication": false,
-            "provisionVMAgent": true,
-            "patchSettings": {
-              "patchMode": "ImageDefault",
-              "assessmentMode": "ImageDefault"
-            }
-          },
-          "secrets": [],
-          "allowExtensionOperations": true,
-          "requireGuestProvisionSignal": true
+            "disablePasswordAuthentication": false
+          }
         },
         "networkProfile": {
           "networkInterfaces": [
@@ -4936,35 +4936,26 @@
           "vmSize": "Standard_D2s_v3"
         },
         "storageProfile": {
-          "imageReference": {
-            "publisher": "Canonical",
-            "offer": "UbuntuServer",
-            "sku": "18.04-LTS",
-            "version": "latest"
-          },
           "osDisk": {
             "createOption": "FromImage",
             "managedDisk": {
               "storageAccountType": "StandardSSD_LRS"
             }
           },
-          "dataDisks": []
+          "imageReference": {
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
+          }
         },
         "osProfile": {
           "computerName": "[parameters('virtualMachines_ford_demo_name')]",
           "adminUsername": "adminuser",
           "adminPassword": "Password!12",
           "linuxConfiguration": {
-            "disablePasswordAuthentication": false,
-            "provisionVMAgent": true,
-            "patchSettings": {
-              "patchMode": "ImageDefault",
-              "assessmentMode": "ImageDefault"
-            }
-          },
-          "secrets": [],
-          "allowExtensionOperations": true,
-          "requireGuestProvisionSignal": true
+            "disablePasswordAuthentication": false
+          }
         },
         "networkProfile": {
           "networkInterfaces": [
@@ -5138,273 +5129,273 @@
         "vpnGatewayGeneration": "Generation2"
       }
     },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/azure-webjobs-eventhub')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_eventhubrepfunction_name'), '/default/azure-webjobs-hosts')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_eventhubrepfunction_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_eventhubrepfunction_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/azure-webjobs-hosts')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_eventhubrepfunction_name'), '/default/azure-webjobs-secrets')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_eventhubrepfunction_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_eventhubrepfunction_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/azure-webjobs-secrets')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/copyactivity-logs')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_evthub_name'), '/default/eventblob')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_evthub_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_evthub_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Blob"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_evthubnodejs_name'), '/default/eventblobnodejs')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_evthubnodejs_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_evthubnodejs_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "Blob"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/fordblob1')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/gps-data')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/vulnerability-assessment')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
-      ],
-      "properties": {
-        "immutableStorageWithVersioning": {
-          "enabled": false
-        },
-        "defaultEncryptionScope": "$account-encryption-key",
-        "denyEncryptionScopeOverride": false,
-        "publicAccess": "None"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_eventhubrepfunction_name'), '/default/', parameters('storageAccounts_eventhubrepfunction_name'), 'ecfc9b')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/fileServices', parameters('storageAccounts_eventhubrepfunction_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_eventhubrepfunction_name'))]"
-      ],
-      "properties": {
-        "accessTier": "TransactionOptimized",
-        "shareQuota": 5120,
-        "enabledProtocols": "SMB"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/teltonikapocb507')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/fileServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
-      ],
-      "properties": {
-        "accessTier": "TransactionOptimized",
-        "shareQuota": 5120,
-        "enabledProtocols": "SMB"
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
-      "apiVersion": "2021-06-01",
-      "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/test')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/fileServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
-      ],
-      "properties": {
-        "accessTier": "TransactionOptimized",
-        "shareQuota": 6,
-        "enabledProtocols": "SMB"
-      }
-    },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2020-11-01",
-      "name": "[parameters('networkInterfaces_aikido_1186_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aikido_1_ip_name'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aikido_1_nsg_name'))]"
-      ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAddress": "10.0.0.5",
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aikido_1_ip_name'))]"
-              },
-              "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]"
-              },
-              "primary": true,
-              "privateIPAddressVersion": "IPv4"
-            }
-          }
-        ],
-        "dnsSettings": {
-          "dnsServers": []
-        },
-        "enableAcceleratedNetworking": false,
-        "enableIPForwarding": false,
-        "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aikido_1_nsg_name'))]"
-        }
-      }
-    },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/azure-webjobs-eventhub')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_eventhubrepfunction_name'), '/default/azure-webjobs-hosts')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_eventhubrepfunction_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_eventhubrepfunction_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/azure-webjobs-hosts')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_eventhubrepfunction_name'), '/default/azure-webjobs-secrets')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_eventhubrepfunction_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_eventhubrepfunction_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/azure-webjobs-secrets')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/copyactivity-logs')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_evthub_name'), '/default/eventblob')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_evthub_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_evthub_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "Blob"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_evthubnodejs_name'), '/default/eventblobnodejs')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_evthubnodejs_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_evthubnodejs_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "Blob"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/fordblob1')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/gps-data')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/vulnerability-assessment')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
+    //   ],
+    //   "properties": {
+    //     "immutableStorageWithVersioning": {
+    //       "enabled": false
+    //     },
+    //     "defaultEncryptionScope": "$account-encryption-key",
+    //     "denyEncryptionScopeOverride": false,
+    //     "publicAccess": "None"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_eventhubrepfunction_name'), '/default/', parameters('storageAccounts_eventhubrepfunction_name'), 'ecfc9b')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/fileServices', parameters('storageAccounts_eventhubrepfunction_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_eventhubrepfunction_name'))]"
+    //   ],
+    //   "properties": {
+    //     "accessTier": "TransactionOptimized",
+    //     "shareQuota": 5120,
+    //     "enabledProtocols": "SMB"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_teltonikafmc003_name'), '/default/teltonikapocb507')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/fileServices', parameters('storageAccounts_teltonikafmc003_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_teltonikafmc003_name'))]"
+    //   ],
+    //   "properties": {
+    //     "accessTier": "TransactionOptimized",
+    //     "shareQuota": 5120,
+    //     "enabledProtocols": "SMB"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+    //   "apiVersion": "2021-06-01",
+    //   "name": "[concat(parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), '/default/test')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Storage/storageAccounts/fileServices', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'), 'default')]",
+    //     "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_sqlvamqrcrrkf6bowu_name'))]"
+    //   ],
+    //   "properties": {
+    //     "accessTier": "TransactionOptimized",
+    //     "shareQuota": 6,
+    //     "enabledProtocols": "SMB"
+    //   }
+    // },
+    // {
+    //   "type": "Microsoft.Network/networkInterfaces",
+    //   "apiVersion": "2020-11-01",
+    //   "name": "[parameters('networkInterfaces_aikido_1186_name')]",
+    //   "location": "[variables('location')]",
+    //   "dependsOn": [
+    //     "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aikido_1_ip_name'))]",
+    //     "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]",
+    //     "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aikido_1_nsg_name'))]"
+    //   ],
+    //   "properties": {
+    //     "ipConfigurations": [
+    //       {
+    //         "name": "ipconfig1",
+    //         "properties": {
+    //           "privateIPAddress": "10.0.0.5",
+    //           "privateIPAllocationMethod": "Dynamic",
+    //           "publicIPAddress": {
+    //             "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_aikido_1_ip_name'))]"
+    //           },
+    //           "subnet": {
+    //             "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]"
+    //           },
+    //           "primary": true,
+    //           "privateIPAddressVersion": "IPv4"
+    //         }
+    //       }
+    //     ],
+    //     "dnsSettings": {
+    //       "dnsServers": []
+    //     },
+    //     "enableAcceleratedNetworking": false,
+    //     "enableIPForwarding": false,
+    //     "networkSecurityGroup": {
+    //       "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_aikido_1_nsg_name'))]"
+    //     }
+    //   }
+    // },
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2020-11-01",
@@ -5443,160 +5434,161 @@
         }
       }
     },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2020-11-01",
-      "name": "[parameters('networkInterfaces_aikido_ford401_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_Aikido_ford_ip_name'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Aikido_ford_nsg_name'))]"
-      ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAddress": "10.0.0.4",
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_Aikido_ford_ip_name'))]"
-              },
-              "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]"
-              },
-              "primary": true,
-              "privateIPAddressVersion": "IPv4"
-            }
-          }
+    
+      {
+        "type": "Microsoft.Network/networkInterfaces",
+        "apiVersion": "2020-11-01",
+        "name": "[parameters('networkInterfaces_aikido_ford401_name')]",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_Aikido_ford_ip_name'))]",
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Aikido_ford_nsg_name'))]"
         ],
-        "dnsSettings": {
-          "dnsServers": []
-        },
-        "enableAcceleratedNetworking": false,
-        "enableIPForwarding": false,
-        "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Aikido_ford_nsg_name'))]"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2020-11-01",
-      "name": "[parameters('networkInterfaces_db2_win_azure41_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_db2_azure_ip_name'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet955_name'), 'default')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_db2winazurensg855_name'))]"
-      ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAddress": "10.2.0.4",
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_db2_azure_ip_name'))]"
-              },
-              "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet955_name'), 'default')]"
-              },
-              "primary": true,
-              "privateIPAddressVersion": "IPv4"
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "properties": {
+                "privateIPAddress": "10.0.0.4",
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIPAddress": {
+                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_Aikido_ford_ip_name'))]"
+                },
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migration_vnet_name'), 'default')]"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
             }
+          ],
+          "dnsSettings": {
+            "dnsServers": []
+          },
+          "enableAcceleratedNetworking": false,
+          "enableIPForwarding": false,
+          "networkSecurityGroup": {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Aikido_ford_nsg_name'))]"
           }
-        ],
-        "dnsSettings": {
-          "dnsServers": []
-        },
-        "enableAcceleratedNetworking": true,
-        "enableIPForwarding": false,
-        "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_db2winazurensg855_name'))]"
         }
-      }
-    },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2020-11-01",
-      "name": "[parameters('networkInterfaces_ford_demo438_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ford_demo_ip_name'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ford_demo_nsg_name'))]"
-      ],
-      "tags": {
-        "Name": "ford-demo-server"
       },
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAddress": "172.16.0.4",
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ford_demo_ip_name'))]"
-              },
-              "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
-              },
-              "primary": true,
-              "privateIPAddressVersion": "IPv4"
-            }
-          }
+      {
+        "type": "Microsoft.Network/networkInterfaces",
+        "apiVersion": "2020-11-01",
+        "name": "[parameters('networkInterfaces_db2_win_azure41_name')]",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_db2_azure_ip_name'))]",
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet955_name'), 'default')]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_db2winazurensg855_name'))]"
         ],
-        "dnsSettings": {
-          "dnsServers": []
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "properties": {
+                "privateIPAddress": "10.2.0.4",
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIPAddress": {
+                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_db2_azure_ip_name'))]"
+                },
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet955_name'), 'default')]"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": []
+          },
+          "enableAcceleratedNetworking": true,
+          "enableIPForwarding": false,
+          "networkSecurityGroup": {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_db2winazurensg855_name'))]"
+          }
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkInterfaces",
+        "apiVersion": "2020-11-01",
+        "name": "[parameters('networkInterfaces_ford_demo438_name')]",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ford_demo_ip_name'))]",
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ford_demo_nsg_name'))]"
+        ],
+        "tags": {
+          "Name": "ford-demo-server"
         },
-        "enableAcceleratedNetworking": false,
-        "enableIPForwarding": false,
-        "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ford_demo_nsg_name'))]"
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "properties": {
+                "privateIPAddress": "172.16.0.4",
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIPAddress": {
+                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ford_demo_ip_name'))]"
+                },
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_ford_demo_vnet_name'), 'ford-demo-subnet')]"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": []
+          },
+          "enableAcceleratedNetworking": false,
+          "enableIPForwarding": false,
+          "networkSecurityGroup": {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ford_demo_nsg_name'))]"
+          }
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkInterfaces",
+        "apiVersion": "2020-11-01",
+        "name": "[parameters('networkInterfaces_kafka_azure772_name')]",
+        "location": "[variables('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_kafka_azure_ip_name'))]",
+          "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet144_name'), 'default')]",
+          "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_kafka_azure_nsg_name'))]"
+        ],
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "ipconfig1",
+              "properties": {
+                "privateIPAddress": "10.1.0.4",
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIPAddress": {
+                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_kafka_azure_ip_name'))]"
+                },
+                "subnet": {
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet144_name'), 'default')]"
+                },
+                "primary": true,
+                "privateIPAddressVersion": "IPv4"
+              }
+            }
+          ],
+          "dnsSettings": {
+            "dnsServers": []
+          },
+          "enableAcceleratedNetworking": true,
+          "enableIPForwarding": false,
+          "networkSecurityGroup": {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_kafka_azure_nsg_name'))]"
+          }
         }
       }
-    },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2020-11-01",
-      "name": "[parameters('networkInterfaces_kafka_azure772_name')]",
-      "location": "[variables('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_kafka_azure_ip_name'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet144_name'), 'default')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_kafka_azure_nsg_name'))]"
-      ],
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAddress": "10.1.0.4",
-              "privateIPAllocationMethod": "Dynamic",
-              "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_kafka_azure_ip_name'))]"
-              },
-              "subnet": {
-                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Azure_GCP_Migrationvnet144_name'), 'default')]"
-              },
-              "primary": true,
-              "privateIPAddressVersion": "IPv4"
-            }
-          }
-        ],
-        "dnsSettings": {
-          "dnsServers": []
-        },
-        "enableAcceleratedNetworking": true,
-        "enableIPForwarding": false,
-        "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_kafka_azure_nsg_name'))]"
-        }
-      }
-    }
   ]
 }
